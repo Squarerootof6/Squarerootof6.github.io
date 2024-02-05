@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+
+<html>
+    <head>
+        <title>Genghao Liu's Homepage</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/9c6ea3fa88.js" crossorigin="anonymous"></script>
+
+        <script src="lib/simpleRequire.js"></script>
+        <script src="lib/config.js"></script>
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/facePrint.js"></script>
+        <script src="lib/testHelper.js"></script>
+        <script src="dist/echarts.js"></script>
+        <script src="data/map/js/china.js"></script>
+
+    </head>
+    <!-- Wrapper -->
+
+
+    <body>
+        <div id="wrapper">
+
+            <!-- Main -->
+                <div id="main">
+                    <div class="inner">
+    
+                        <!-- Header -->
+                            <header id="header">
+                                <a href="https://html5up.net/" class="logo" target="_blank"><strong>Editorial</strong> by HTML5 UP</a>
+                                <ul class="icons">
+                                    <li><a href="https://orcid.org/0009-0007-4049-127X" class="icon brands fa-orcid"><span class="label">ORCID</span></a></li>
+                                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                                    <li><a href="https://www.facebook.com/profile.php?id=100009560453540" class="icon brands fa-facebook-f" target="_blank"><span class="label">Facebook</span></a></li>
+                                    <li><a href="https://github.com/Squarerootof6" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                                    <li><a href="https://www.instagram.com/square_root_of_six/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                                    <li><a href="https://space.bilibili.com/34658125?spm_id_from=333.1007.0.0" class="icon brands fa-bilibili" target="_blank"><span class="label">BiliBili</span></a></li>
+                                </ul>
+                            </header>
+                        
+                        <style>
+                            h1 {
+                                line-height: 60px;
+                                height: 60px;
+                                background: #146402;
+                                text-align: center;
+                                font-weight: bold;
+                                color: #eee;
+                                font-size: 14px;
+                            }
+                            .chart {
+                                height: 90vh;
+                            }
+                        </style>
+                        <div class="chart" id="main0"></div>
+                        <script>
+                            var chart;
+
+                            require([
+                                'echarts',
+                                'map/js/china'
+                            ], function (echarts) {
+
+                                option = {
+                                    tooltip: {
+                                        trigger: 'item',
+                                        formatter: '{b}'
+                                    },
+                                    legend: {
+                                        top: 0,
+                                        left: 'center',
+                                        data: ['足迹','中国' ]
+                                    },
+                                    series: [
+                                        {
+                                            name: '足迹',
+                                            type: 'map',
+                                            mapType: 'china',
+                                            selectedMode : 'multiple',
+                                            label: {
+                                                normal: {
+                                                    show: true,
+                                                },
+                                                emphasis: {
+                                                    show: true
+                                                }
+                                            },
+                                            roam: true,
+                                            // nameMap: {
+                                            //     '广东': 'guangdong',
+                                            //     '广西': 'guangxi'
+                                            // },
+                                            data:[
+                                                {name:'广东', selected: true},
+                                                {name:'云南', selected: true},
+                                                {name:'北京', selected: true},
+                                                {name:'新疆', selected: true},
+                                                {name:'青海', selected: true},
+                                                {name:'甘肃', selected: true},
+                                                {name:'湖南', selected: true},
+                                                {name:'河北', selected: true},
+
+                                            ]
+                                        },
+                                        {
+                                            name: '中国',
+                                            type: 'map',
+                                            mapType: 'china',
+                                            selectedMode : 'multiple',
+                                            label: {
+                                                normal: {
+                                                    show: true
+                                                },
+                                                emphasis: {
+                                                    show: true
+                                                }
+                                            },
+                                            roam: true,
+                                            //nameMap: {
+                                            //    '广东': 'guangdong',
+                                            //    '广西': 'guangxi'
+                                            //},
+                                            //data:[
+                                            //    {name:'广东', selected:true}
+                                            //]
+                                        }
+
+                                    ]
+                                };
+
+                                chart = testHelper.createChart(echarts, 'main0', option);
+
+                            });
+
+                            function setOption() {
+                                chart.setOption({
+                                    series: {
+                                        label: {
+                                            normal: {
+                                                color: 'red'
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+
+                        </script>
+                    </div>
+                </div>
+    
+            <!-- Sidebar -->
+                <div id="sidebar">
+                    <div class="inner">
+    
+                        <!-- Search -->
+                            <section id="search" class="alt">
+                                <form method="post" action="#">
+                                    <input type="text" name="query" id="query" placeholder="Search" />
+                                </form>
+                            </section>
+    
+                        <!-- Menu -->
+                            <nav id="menu">
+                                <header class="major">
+                                    <h2>Menu</h2>
+                                </header>
+                                <ul>
+                                    <li><a href="../index.html">Homepage</a></li>
+                                    <li><a href="../generic.html">Generic</a></li>
+                                    <li><a href="../elements.html">Elements</a></li>
+                                    <li><a href="../Research.html">Research</a></li>
+                                    <li>
+                                        <span class="opener">Hobbies</span>
+                                        <ul>
+                                            <li><a href="#">Volleyball</a></li>
+                                            <li><a href="#">Guitar</a></li>
+                                            <li><a href="#">Photography</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Publications</a></li>
+                                    <li><a href="./">Travelling</a></li>
+                                </ul>
+                            </nav>
+    
+                        
+                        <!-- Section -->
+                            <section>
+                                <header class="major">
+                                    <h2>Get in touch</h2>
+                                </header>
+                                <p>If you are interested in any of my projects and would like to collaborate, do not hesitate to contact me!</p>
+                                <ul class="contact">
+                                    <li class="icon brands fa-google"><a href="#">liugenghao0310@gmail.com</a></li>
+                                    <li class="icon solid fa-school"><a href="#">liugh33@mail2.sysu.edu.cn</a></li>
+                                    <li class="icon solid fa-envelope"><a href="#">squarerootof6@outlook.com</a></li>
+                                </ul>
+                            </section>
+                        <!-- Section -->
+                        <section>
+                            <header class="major">
+                                <h2>News</h2>
+                            </header>
+                            <div class="mini-posts">
+                                <article>
+                                    <a href="#" class="image"><img src="../images/pic07.jpg" alt="" /></a>
+                                    <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                </article>
+                                <article>
+                                    <a href="#" class="image"><img src="../images/pic08.jpg" alt="" /></a>
+                                    <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                </article>
+                                <article>
+                                    <a href="#" class="image"><img src="../images/pic09.jpg" alt="" /></a>
+                                    <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                                </article>
+                            </div>
+                            <ul class="actions">
+                                <li><a href="#" class="button">More</a></li>
+                            </ul>
+                        </section>
+    
+    
+                        <!-- Footer -->
+                            <footer id="footer">
+                                <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                            </footer>
+    
+                    </div>
+                </div>
+            <!-- Scripts -->
+                <script src="../assets/js/jquery.min.js"></script>
+                <script src="../assets/js/browser.min.js"></script>
+                <script src="../assets/js/breakpoints.min.js"></script>
+                <script src="../assets/js/util.js"></script>
+                <script src="../assets/js/main.js"></script>
+        </div>
+
+    </body>
+</html>
