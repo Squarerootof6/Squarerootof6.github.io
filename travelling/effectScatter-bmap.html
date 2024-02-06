@@ -3,11 +3,115 @@
 -->
 <!DOCTYPE html>
 <html lang="en" style="height: 100%">
-<head>
-  <meta charset="utf-8">
+  <head>
+<meta charset="utf-8" />
+<script src="https://kit.fontawesome.com/9c6ea3fa88.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../assets/css/main.css" />
 </head>
+
 <body style="height: 100%; margin: 0">
-  <div id="container" style="height: 100%"></div>
+
+    <!-- Main -->
+  <div class="inner">
+    <!-- Header -->
+    <header id="header">
+        <a href="https://html5up.net/" class="logo" target="_blank"><strong>Editorial</strong> by HTML5 UP</a>
+        <ul class="icons">
+            <li><a href="https://orcid.org/0009-0007-4049-127X" class="icon brands fa-orcid"><span class="label">ORCID</span></a></li>
+            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100009560453540" class="icon brands fa-facebook-f" target="_blank"><span class="label">Facebook</span></a></li>
+            <li><a href="https://github.com/Squarerootof6" class="icon brands fa-github"><span class="label">Github</span></a></li>
+            <li><a href="https://www.instagram.com/square_root_of_six/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+            <li><a href="https://space.bilibili.com/34658125?spm_id_from=333.1007.0.0" class="icon brands fa-bilibili" target="_blank"><span class="label">BiliBili</span></a></li>
+        </ul>
+    </header>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="inner">
+
+            <!-- Search -->
+                <section id="search" class="alt">
+                    <form method="post" action="#">
+                        <input type="text" name="query" id="query" placeholder="Search" />
+                    </form>
+                </section>
+
+            <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    <ul>
+                        <li><a href="../index.html">Homepage</a></li>
+                        <li><a href="../generic.html">Generic</a></li>
+                        <li><a href="../elements.html">Elements</a></li>
+                        <li><a href="../Research.html">Research</a></li>
+                        <li>
+                            <span class="opener">Hobbies</span>
+                            <ul>
+                                <li><a href="#">Volleyball</a></li>
+                                <li><a href="#">Guitar</a></li>
+                                <li><a href="#">Photography</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Travelling</a></li>
+                    </ul>
+                </nav>
+
+            
+            <!-- Section -->
+                <section>
+                    <header class="major">
+                        <h2>Get in touch</h2>
+                    </header>
+                    <p>If you are interested in any of my projects and would like to collaborate, do not hesitate to contact me!</p>
+                    <ul class="contact">
+                        <li class="icon brands fa-google"><a href="#">liugenghao0310@gmail.com</a></li>
+                        <li class="icon solid fa-school"><a href="#">liugh33@mail2.sysu.edu.cn</a></li>
+                        <li class="icon solid fa-envelope"><a href="#">squarerootof6@outlook.com</a></li>
+                    </ul>
+                </section>
+            <!-- Section -->
+            <section>
+                <header class="major">
+                    <h2>News</h2>
+                </header>
+                <div class="mini-posts">
+                    <article>
+                        <a href="#" class="image"><img src="../images/pic07.jpg" alt="" /></a>
+                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                    </article>
+                    <article>
+                        <a href="#" class="image"><img src="../images/pic08.jpg" alt="" /></a>
+                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                    </article>
+                    <article>
+                        <a href="#" class="image"><img src="../images/pic09.jpg" alt="" /></a>
+                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                    </article>
+                </div>
+                <ul class="actions">
+                    <li><a href="#" class="button">More</a></li>
+                </ul>
+            </section>
+
+
+            <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </footer>
+
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </div>
+  <div id="container" style="height: 100%; margin: 50">
   <!-- Uncomment this line if you want to dataTool extension
   <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/dataTool.min.js"></script>
   -->
@@ -22,10 +126,10 @@
   <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
   -->
     <!-- 引入 ECharts -->
-    <script src="travelling/dist/echarts.min.js"></script>
+    <script src="dist/echarts.min.js"></script>
     <!-- 引入百度地图扩展 -->
     <script src="https://api.map.baidu.com/api?v=3.0&ak=11KhO6AwgKNDOIiu4N6AEHozzcNOn4cq"></script>
-    <script src="travelling/dist/extension/bmap.min.js"></script>
+    <script src="dist/extension/bmap.min.js"></script>
 
   <script type="text/javascript">
     var dom = document.getElementById('container');
@@ -632,5 +736,7 @@ option = {
 
     window.addEventListener('resize', myChart.resize);
   </script>
+</div>
+
 </body>
 </html>
