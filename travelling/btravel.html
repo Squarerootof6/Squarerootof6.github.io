@@ -49,16 +49,105 @@ under the License.
             <header class="major">
               <h2>Foot Map</h2>
             </header>
-            <div id="map" style="height: 80vh; width: 80vh; margin: 0 auto"></div>
-            
+            <div id="map" style="height: 100vh; width: 100vh; margin: 0 auto"></div>
+
+          </section>
+          </div>
+        
+        </div>
+          <!-- Sidebar -->
+          <div id="sidebar">
+              <div class="inner">
+
+                  <!-- Search -->
+                      <section id="search" class="alt">
+                          <form method="post" action="#">
+                              <input type="text" name="query" id="query" placeholder="Search" />
+                          </form>
+                      </section>
+
+                  <!-- Menu -->
+                      <nav id="menu">
+                          <header class="major">
+                              <h2>Menu</h2>
+                          </header>
+                          <ul>
+                              <li><a href="../index.html">Homepage</a></li>
+                              <li><a href="../generic.html">Generic</a></li>
+                              <li><a href="../elements.html">Elements</a></li>
+                              <li><a href="../Research.html">Research</a></li>
+                              <li>
+                                  <span class="opener">Hobbies</span>
+                                  <ul>
+                                      <li><a href="#">Volleyball</a></li>
+                                      <li><a href="#">Guitar</a></li>
+                                      <li><a href="#">Photography</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="#">Publications</a></li>
+                              <li><a href="#">Travelling</a></li>
+                          </ul>
+                      </nav>
+
+                  
+                  <!-- Section -->
+                      <section>
+                          <header class="major">
+                              <h2>Get in touch</h2>
+                          </header>
+                          <p>If you are interested in any of my projects and would like to collaborate, do not hesitate to contact me!</p>
+                          <ul class="contact">
+                              <li class="icon brands fa-google"><a href="#">liugenghao0310@gmail.com</a></li>
+                              <li class="icon solid fa-school"><a href="#">liugh33@mail2.sysu.edu.cn</a></li>
+                              <li class="icon solid fa-envelope"><a href="#">squarerootof6@outlook.com</a></li>
+                          </ul>
+                      </section>
+                  <!-- Section -->
+                  <section>
+                      <header class="major">
+                          <h2>News</h2>
+                      </header>
+                      <div class="mini-posts">
+                          <article>
+                              <a href="#" class="image"><img src="../images/pic07.jpg" alt="" /></a>
+                              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                          </article>
+                          <article>
+                              <a href="#" class="image"><img src="../images/pic08.jpg" alt="" /></a>
+                              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                          </article>
+                          <article>
+                              <a href="#" class="image"><img src="../images/pic09.jpg" alt="" /></a>
+                              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                          </article>
+                      </div>
+                      <ul class="actions">
+                          <li><a href="#" class="button">More</a></li>
+                      </ul>
+                  </section>
+
+
+                  <!-- Footer -->
+                      <footer id="footer">
+                          <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                      </footer>
+
+              </div>
+          </div>
+      </div>   
+      <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/browser.min.js"></script>
+      <script src="../assets/js/breakpoints.min.js"></script>
+      <script src="../assets/js/util.js"></script>
+      <script src="../assets/js/main.js"></script>
+                  
         <!-- 引入 ECharts -->
-        <script src="dist/echarts.min.js"></script>
+        <script src="echarts.min.js"></script>
         <!-- 引入百度地图扩展 -->
         <script src="https://api.map.baidu.com/api?v=3.0&ak=11KhO6AwgKNDOIiu4N6AEHozzcNOn4cq"></script>
-        <script src="dist/extension/bmap.min.js"></script>
+        <script src="bmap.min.js"></script>
         <script type="text/javascript">
           var dom = document.getElementById('map');
-          console.log(dom)
           var myChart = echarts.init(dom, null, {
             renderer: 'canvas',
             useDirtyRect: false
@@ -662,96 +751,6 @@ under the License.
       
           window.addEventListener('resize', myChart.resize);
         </script>
-          </section>
-          </div>
-        
-        </div>
-          <!-- Sidebar -->
-          <div id="sidebar">
-              <div class="inner">
-
-                  <!-- Search -->
-                      <section id="search" class="alt">
-                          <form method="post" action="#">
-                              <input type="text" name="query" id="query" placeholder="Search" />
-                          </form>
-                      </section>
-
-                  <!-- Menu -->
-                      <nav id="menu">
-                          <header class="major">
-                              <h2>Menu</h2>
-                          </header>
-                          <ul>
-                              <li><a href="../index.html">Homepage</a></li>
-                              <li><a href="../generic.html">Generic</a></li>
-                              <li><a href="../elements.html">Elements</a></li>
-                              <li><a href="../Research.html">Research</a></li>
-                              <li>
-                                  <span class="opener">Hobbies</span>
-                                  <ul>
-                                      <li><a href="#">Volleyball</a></li>
-                                      <li><a href="#">Guitar</a></li>
-                                      <li><a href="#">Photography</a></li>
-                                  </ul>
-                              </li>
-                              <li><a href="#">Publications</a></li>
-                              <li><a href="#">Travelling</a></li>
-                          </ul>
-                      </nav>
-
-                  
-                  <!-- Section -->
-                      <section>
-                          <header class="major">
-                              <h2>Get in touch</h2>
-                          </header>
-                          <p>If you are interested in any of my projects and would like to collaborate, do not hesitate to contact me!</p>
-                          <ul class="contact">
-                              <li class="icon brands fa-google"><a href="#">liugenghao0310@gmail.com</a></li>
-                              <li class="icon solid fa-school"><a href="#">liugh33@mail2.sysu.edu.cn</a></li>
-                              <li class="icon solid fa-envelope"><a href="#">squarerootof6@outlook.com</a></li>
-                          </ul>
-                      </section>
-                  <!-- Section -->
-                  <section>
-                      <header class="major">
-                          <h2>News</h2>
-                      </header>
-                      <div class="mini-posts">
-                          <article>
-                              <a href="#" class="image"><img src="../images/pic07.jpg" alt="" /></a>
-                              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                          </article>
-                          <article>
-                              <a href="#" class="image"><img src="../images/pic08.jpg" alt="" /></a>
-                              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                          </article>
-                          <article>
-                              <a href="#" class="image"><img src="../images/pic09.jpg" alt="" /></a>
-                              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                          </article>
-                      </div>
-                      <ul class="actions">
-                          <li><a href="#" class="button">More</a></li>
-                      </ul>
-                  </section>
-
-
-                  <!-- Footer -->
-                      <footer id="footer">
-                          <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-                      </footer>
-
-              </div>
-          </div>
-      </div>   
-      <script src="../assets/js/jquery.min.js"></script>
-      <script src="../assets/js/browser.min.js"></script>
-      <script src="../assets/js/breakpoints.min.js"></script>
-      <script src="../assets/js/util.js"></script>
-      <script src="../assets/js/main.js"></script>
-
       
     </body>
 </html>
