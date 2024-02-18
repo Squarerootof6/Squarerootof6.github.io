@@ -109,11 +109,11 @@
       <script src="../assets/js/breakpoints.min.js"></script>
       <script src="../assets/js/util.js"></script>
       <script src="../assets/js/main.js"></script>
-                  
-        <!-- 引入 ECharts -->
-        <script src="echarts.min.js"></script>
-        <!-- 引入百度地图扩展 -->
-        <script src="https://api.map.baidu.com/api?v=3.0&ak=11KhO6AwgKNDOIiu4N6AEHozzcNOn4cq"></script>
+      <script src='./data.js'></script>
+      <!-- 引入 ECharts -->
+      <script src="echarts.min.js"></script>
+      <!-- 引入百度地图扩展 -->
+      <script src="https://api.map.baidu.com/api?v=3.0&ak=11KhO6AwgKNDOIiu4N6AEHozzcNOn4cq"></script>
         <script src="bmap.min.js"></script>
         <script type="text/javascript">
           var dom = document.getElementById('map');
@@ -234,118 +234,89 @@
               }
             },
           };
-          const data = [
-          { name: '大理', value: 21,href:'../lens/index.html'},
-          { name: '丽江古城', value: 34,href:'../lens/index.html'},
-          ];
-        var geoCoder = new BMap.Geocoder();
-        const geoCoordMap = {};
-        const promises = [];
-        for (var i = 0; i < data.length; i++) {
-            (function(index) {
-                var city = data[index].name;
-        
-                var promise = new Promise(function(resolve, reject) {
-                    geoCoder.getPoint(city, function(point) {
-                        if (point) {
-                            var lng = point.lng;
-                            var lat = point.lat;
-                            geoCoordMap[city] = [lng, lat];
-                            resolve();
-                        } else {
-                            console.log('无法获取到经纬度');
-                            reject();
-                        }
+
+          //const Description = getDescription()
+          const convertData = function (data) {
+            var res = [];
+            for (var i = 0; i < data.length; i++) {
+                var geoCoord = data[i].coord;
+                if (geoCoord) {
+                    res.push({
+                        name: data[i].name,
+                        value: geoCoord.concat(data[i].value),
                     });
-                });
-                promises.push(promise);
-            })(i);
-        }
-        Promise.all(promises).then(function() {
-            option['series'] = [
-            {
-              name: 'footprint',
-              type: 'scatter',
-              coordinateSystem: 'bmap',
-              data: convertData(data),
-              symbolSize: function (val) {
-                return val[2] / 2;
-              },
-              encode: {
-                value: 2
-              },
-              label: {
-                formatter: '{b}',
-                position: 'right',
-                show: false
-              },
-              emphasis: {
-                label: {
-                  show: true
                 }
-              }
+            }
+            return res;
+        };
+          option['series'] = [
+          {
+            name: 'footprint',
+            type: 'scatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data),
+            symbolSize: function (val) {
+              return val[2] / 2;
             },
-            {
-              name: 'Top 5',
-              type: 'effectScatter',
-              coordinateSystem: 'bmap',
-              data: convertData(
-                data
-                  .sort(function (a, b) {
-                    return b.value - a.value;
-                  })
-                  .slice(0, 6)
-              ),
-              symbolSize: function (val) {
-                return val[2] / 2;
-              },
-              encode: {
-                value: 2
-              },
-              showEffectOn: 'render',
-              rippleEffect: {
-                brushType: 'stroke'
-              },
+            encode: {
+              value: 2
+            },
+            label: {
+              formatter: '{b}',
+              position: 'right',
+              show: false
+            },
+            emphasis: {
               label: {
-                formatter: '{b}',
-                position: 'right',
                 show: true
-              },
-              itemStyle: {
-                shadowBlur: 10,
-                shadowColor: '#333'
-              },
-              emphasis: {
-                scale: true
-              },
-              zlevel: 1
+              }
             }
-          ]
-            if (option && typeof option === 'object') {
-              myChart.setOption(option);
-            }
-                window.addEventListener('resize', myChart.resize);
-        }).catch(function() {
-            console.log('处理地理编码操作时出错');
-        });
-        
-      const convertData = function (data) {
-        var res = [];
-        for (var i = 0; i < data.length; i++) {
-            var geoCoord = geoCoordMap[data[i].name];
-            if (geoCoord) {
-                res.push({
-                    name: data[i].name,
-                    value: geoCoord.concat(data[i].value),
-                    href: data[i].href
-                });
-            }
-        }
-        return res;
-    };
+          },
+          {
+            name: 'Top 5',
+            type: 'effectScatter',
+            coordinateSystem: 'bmap',
+            data: convertData(
+              data
+                .sort(function (a, b) {
+                  return b.value - a.value;
+                })
+                .slice(0, 6)
+            ),
+            symbolSize: function (val) {
+              return val[2] / 2;
+            },
+            encode: {
+              value: 2
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+              brushType: 'stroke'
+            },
+            label: {
+              formatter: '{b}',
+              position: 'right',
+              show: true
+            },
+            itemStyle: {
+              shadowBlur: 10,
+              shadowColor: '#333'
+            },
+            emphasis: {
+              scale: true
+            },
+            zlevel: 1
+          }
+        ]
+          if (option && typeof option === 'object') {
+            myChart.setOption(option);
+          }
+              window.addEventListener('resize', myChart.resize);
+
     myChart.on('click', function (params) {
       if (params.seriesType === 'scatter' || params.seriesType === 'effectScatter') {
           var albumheader = document.getElementById('albumheader');
+          var city = params.data.name
           albumheader.innerHTML = '';
           var header = document.createElement('h2');
           header.textContent = params.data.name;
@@ -361,12 +332,14 @@
               var link = document.createElement('a');
               var p = document.createElement('p');
               var img = document.createElement('img');
-              img.src =   "./images/"+params.data.name+"/thumbs/"+i.toString().padStart(2, '0')+".jpg";
-              link.href = "./images/"+params.data.name+"/fulls/"+i.toString().padStart(2, '0')+".jpg";
+              img.src =   "./images/"+city+"/thumbs/"+i.toString().padStart(2, '0')+".jpg";
+              link.href = "./images/"+city+"/fulls/"+i.toString().padStart(2, '0')+".jpg";
               link.className = 'image';
               link.appendChild(img);
-              h2.textContent = i;
-              p.textContent = 'Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.';
+              h2.textContent = Description[city][i][0];
+              //p.textContent = 'Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.';
+              
+              p.textContent = Description[city][i][1];
               thumb.className = 'thumb';
               thumb.appendChild(link);
               thumb.appendChild(h2);
