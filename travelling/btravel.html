@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Genghao Liu's Homepage</title>
+        <title>Genghao Liu's Footprint</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="../assets/css/main.css" />
@@ -33,14 +33,21 @@
               </ul>
           </header>
           <section>
-            <header class="major">
-              <h2>Footprint Map</h2>
-            </header>
-            <div id="map" style="height: 60vh; width: 100%; margin: 0 auto"></div>
+            <div id="map" style="height: 800px; width: 100%; margin: 0 auto"></div>
+          </section>
+          
+          <section>
+            <header class="major" id="albumheader"></header>
+
             <div id="hiddenContent" >
               <div class="poptrox-overlay" id="album" ></div>
-            </div>
+
+            <!--<script src="./assets/js/jquery.poptrox.min.js"></script>
+            <script src="./assets/js/main.js"></script>--> 
+          </div>
           </section>
+
+          
           </div>
         
         </div>
@@ -62,8 +69,6 @@
                           </header>
                           <ul>
                               <li><a href="../index.html">Homepage</a></li>
-                              <li><a href="../generic.html">Generic</a></li>
-                              <li><a href="../elements.html">Elements</a></li>
                               <li><a href="../Research.html">Research</a></li>
                               <li>
                                   <span class="opener">Hobbies</span>
@@ -74,7 +79,7 @@
                                   </ul>
                               </li>
                               <li><a href="#">Publications</a></li>
-                              <li><a href="#">Travelling</a></li>
+                              <li><a href="#">Footprint</a></li>
                           </ul>
                       </nav>
 
@@ -129,8 +134,8 @@
               trigger: 'item'
             },
             bmap: {
-              center: [104.114129, 37.550339],
-              zoom: 5,
+              center: [109, 34.5],
+              zoom: 2,
               roam: true,
               mapStyle: {
                 styleJson: [
@@ -231,7 +236,7 @@
           };
           const data = [
           { name: '大理', value: 21,href:'../lens/index.html'},
-          { name: '丽江', value: 34,href:'../lens/index.html'},
+          { name: '丽江古城', value: 34,href:'../lens/index.html'},
           ];
         var geoCoder = new BMap.Geocoder();
         const geoCoordMap = {};
@@ -338,59 +343,51 @@
         }
         return res;
     };
-      myChart.on('click', function (params) {
-        if (params.seriesType === 'scatter' || params.seriesType === 'effectScatter') {
-
-            // 获取 <div class="poptrox-overlay" id="album"> 标签
-            var album = document.getElementById('album');
-            album.innerHTML = '';
-            // 创建三个 <article class="thumb"> 标签，并添加到 <div class="poptrox-overlay" id="album"> 中
-            var imgnum = parseInt(params.data.value[2]);
-            for (var i = 1; i <= imgnum; i++) {
-                var thumb = document.createElement('article');
-                var h2 = document.createElement('h2');
-                var link = document.createElement('a');
-                var p = document.createElement('p');
-                var img = document.createElement('img');
-                img.src =   "./images/"+params.data.name+"/thumbs/"+i.toString().padStart(2, '0')+".jpg";
-                link.href = "./images/"+params.data.name+"/fulls/"+i.toString().padStart(2, '0')+".jpg";
-                link.className = 'image';
-                link.appendChild(img);
-                h2.textContent = i;
-                p.textContent = 'Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.';
-                thumb.className = 'thumb';
-                thumb.appendChild(link);
-                thumb.appendChild(h2);
-                thumb.appendChild(p);
-                album.appendChild(thumb);
-            }
-          
+    myChart.on('click', function (params) {
+      if (params.seriesType === 'scatter' || params.seriesType === 'effectScatter') {
+          var albumheader = document.getElementById('albumheader');
+          albumheader.innerHTML = '';
+          var header = document.createElement('h2');
+          header.textContent = params.data.name;
+          albumheader.appendChild(header);
+          // 获取 <div class="poptrox-overlay" id="album"> 标签
+          var album = document.getElementById('album');
+          album.innerHTML = '';
+          // 创建三个 <article class="thumb"> 标签，并添加到 <div class="poptrox-overlay" id="album"> 中
+          var imgnum = parseInt(params.data.value[2]);
+          for (var i = 1; i <= imgnum; i++) {
+              var thumb = document.createElement('article');
+              var h2 = document.createElement('h2');
+              var link = document.createElement('a');
+              var p = document.createElement('p');
+              var img = document.createElement('img');
+              img.src =   "./images/"+params.data.name+"/thumbs/"+i.toString().padStart(2, '0')+".jpg";
+              link.href = "./images/"+params.data.name+"/fulls/"+i.toString().padStart(2, '0')+".jpg";
+              link.className = 'image';
+              link.appendChild(img);
+              h2.textContent = i;
+              p.textContent = 'Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.';
+              thumb.className = 'thumb';
+              thumb.appendChild(link);
+              thumb.appendChild(h2);
+              thumb.appendChild(p);
+              album.appendChild(thumb);
+          }
+        
           var hiddenContent = document.getElementById('hiddenContent');
-            var js = document.createElement('script');
-            js.src = "./assets/js/jquery.min.js"
-            album.appendChild(js)
-            var js = document.createElement('script');
-            js.src = "./assets/js/jquery.poptrox.min.js"
-            album.appendChild(js)
-            var js = document.createElement('script');
-            js.src = "./assets/js/browser.min.js"
-            album.appendChild(js)
-            var js = document.createElement('script');
-            js.src = "./assets/js/breakpoints.min.js"
-            album.appendChild(js)
-            var js = document.createElement('script');
-            js.src = "./assets/js/util.js"
-            album.appendChild(js)
-            var js = document.createElement('script');
-            js.src = "./assets/js/main.js"
-            hiddenContent.appendChild(js)
-              // 如果内容是隐藏的，则显示它；如果已经显示，则隐藏它
-              //if (hiddenContent.style.display === 'none') {
-              //    hiddenContent.style.display = 'block';
-              //} else {
-              //    hiddenContent.style.display = 'none';
-              //}
-        }
+          var scripts = ["jquery.min.js", "jquery.poptrox.min.js", "browser.min.js", "breakpoints.min.js", "util.js", "main.js"];
+          scripts.forEach(function(script) {
+              var js = document.createElement('script');
+              js.src = "./assets/js/" + script;
+              hiddenContent.appendChild(js);
+          });
+            // 如果内容是隐藏的，则显示它；如果已经显示，则隐藏它
+            //if (hiddenContent.style.display === 'none') {
+            //    hiddenContent.style.display = 'block';
+            //} else {
+            //    hiddenContent.style.display = 'none';
+            //}
+      }
     });
         </script>
       
