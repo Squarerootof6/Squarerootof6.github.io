@@ -80,7 +80,7 @@
 				overlayOpacity: 0,
 				popupCloserText: '',
 				popupHeight: 150,
-				popupLoaderText: '',
+				popupLoaderText: 'loadertext',
 				popupSpeed: 300,
 				popupWidth: 150,
 				selector: '.thumb > a.image',
