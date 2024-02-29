@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../assets/css/main.css" />
         <link rel="stylesheet" href="./assets/css/main.css" />
         <noscript><link rel="stylesheet" href=".assets/css/noscript.css" /></noscript>
+        <script src="https://kit.fontawesome.com/9c6ea3fa88.js" crossorigin="anonymous"></script>
         <style>
           /* 初始状态下隐藏内容 */
           #hiddenContent {
@@ -33,7 +34,7 @@
               </ul>
           </header>
           <section>
-            <div id="map" style="height: 800px; width: 100%; margin: 0 auto"></div>
+            <div id="map" style="height: 80vh; width: 100%; margin: 0 auto"></div>
           </section>
           
           <section>
@@ -179,8 +180,8 @@
               trigger: 'item'
             },
             bmap: {
-              center: [109, 34.5],
-              zoom: 2,
+              center: [120,10],
+              zoom: 6,
               roam: true,
               mapStyle: {
                 styleJson: [
@@ -381,10 +382,10 @@
               link.href = "./images/"+city+"/fulls/"+i.toString().padStart(2, '0')+".jpg";
               link.className = 'image';
               link.appendChild(img);
-              h2.textContent = Description[city][i][0];
+              h2.textContent = Description[city][i+1][0];
               //p.textContent = 'Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.';
               
-              p.textContent = Description[city][i][1];
+              p.textContent = Description[city][i+1][1];
               thumb.className = 'thumb';
               thumb.appendChild(link);
               thumb.appendChild(h2);
