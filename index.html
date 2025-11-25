@@ -140,7 +140,7 @@
 									<h2>Message Board</h2>
 								</header>
 								<div class="mini-posts">
-									<form method="post" action="#">
+									<form method="post" action="/submit/">
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
@@ -179,7 +179,28 @@
 									</form>
 								</div>
 							</section>
-
+                            <script>
+                                $(document).ready(function() {
+                                    $('#send-message').click(function() {
+                                        var message = $('#demo-message').val();
+                                        $.ajax({
+                                            url: '/save_message/',
+                                            type: 'POST',
+                                            data: {
+                                                'demo-message': message,
+                                                'csrfmiddlewaretoken': '{{ csrf_token }}'
+                                            },
+                                            success: function(response) {
+                                                if (response.status === 'success') {
+                                                    alert('Message sent successfully!');
+                                                } else {
+                                                    alert('Error sending message.');
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
 
 							<!-- Footer -->
 								<footer id="footer">
